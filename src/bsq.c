@@ -36,7 +36,8 @@ int bsq(char *buffer, int size)
     in.bytes = size;
     fill_struct(&in, buffer);
     parse_map(&in);
-    print_x(&in);
+    if (in.largest != 0)
+        print_x(&in);
     display_map(in);
     free_array(&in);
     return (0);

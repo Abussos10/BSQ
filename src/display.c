@@ -33,7 +33,7 @@ int rec_chunk(st_bsq in, char *map)
         print_chunk(map, CHUNK, start, end);
     end -= CHUNK;
     end += lastchunk;
-    print_chunk(map, lastchunk - 2, start, end - 1);
+    print_chunk(map, lastchunk - 1, start, end - 1);
 
     return (0);
 }
@@ -43,7 +43,7 @@ int print_chunk(char *map, int size, int start, int end)
 {
     char *chunk = (char *) malloc((size + 1) * sizeof(char));
     int i, j = 0;
-    for (i = start; i != end; i++, j++)
+    for (i = start; i != end && map[i] != '\0'; i++, j++)
         chunk[j] = map[i];
     write(1, chunk, size);
     free(chunk);
