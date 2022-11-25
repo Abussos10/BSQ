@@ -15,7 +15,7 @@ void fill_struct(st_bsq *in, char *buffer)
     in->buffer = buffer;
     in->size = get_map_size(buffer);
     in->rows = in->size;
-    in->cols = in->size + 1;
+    in->cols = get_cols(buffer);
     in->orix = 0;
     in->oriy = 0;
     in->bsqx = 0;

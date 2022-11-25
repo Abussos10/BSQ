@@ -10,6 +10,8 @@
 
 int my_putstr(char const *str);
 
+int is_number(const char *str);
+
 int my_putchar(char c);
 
 int my_put_nbr(int nb);
@@ -24,6 +26,12 @@ char *my_strdup(char const *src);
 
 char *convert_octal(unsigned int nb);
 
+int my_getnbr(const char *str);
+
 int my_compute_square_root(int nb);
+
+int is_bsq_friendly(const char *str);
+
+int get_int_len(int nb);
 
 #endif /* !MY_H_ */

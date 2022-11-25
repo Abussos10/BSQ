@@ -5,27 +5,28 @@
 ** bsq
 */
 
-#include <stdio.h>
-#include <unistd.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <stdlib.h>
-#include <fcntl.h>
 #include "../include/bsq.h"
 
 int main(int ac, char **av)
 {
+    if (ac != 2 && ac != 3)
+        return (_ERROR_WRONG_ARG_);
     struct stat buf;
-    stat(av[1], &buf);
-    int size = buf.st_size;
-    char *buffer = malloc(sizeof(char *) * (size + 1));
-    int fd = open(av[1], O_RDONLY);
-    if (fd == -1)
-        return (_ERROR_EMPTY_FILE_);
-    read(fd, buffer, size);
-    bsq(buffer, size);
-    free(buffer);
-    close(fd);
+    char *buffer;
+    int size, fd;
+    if (ac == 2) {
+        stat(av[1], &buf);
+        size = buf.st_size;
+        buffer = malloc(sizeof(char *) * (size + 1));
+        fd = open(av[1], O_RDONLY);
+        if (fd == -1)
+            return (_ERROR_EMPTY_FILE_);
+        read(fd, buffer, size);
+        bsq(buffer, size);
+        close(fd);
+        free(buffer);
+    } else
+        return (map_error(av[1], av[2]));
     return (0);
 }
 
@@ -50,17 +51,4 @@ void print_x(st_bsq *in)
             in->map[x][y] = 'x';
         }
     }
-}
-
-// displaying the map with only one system call
-void display_map(st_bsq in)
-{
-    int x, y, i = 0;
-    char *map = (char *) malloc((in.bytes + 1) * sizeof(char));
-    for (x = 0; x < in.rows; x++) {
-        for (y = 0; y < in.cols; y++, i++) {
-            map[i] = in.map[x][y];
-        }
-    }
-    write(1, map, in.bytes);
 }
