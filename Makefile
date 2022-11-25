@@ -8,7 +8,7 @@
 CC = gcc
 SRC = $(shell find src/ -type f -name '*.c')
 OBJ = $(SRC: .c=.o)
-CFLAGS  = -Wall -Wextra -g
+CFLAGS  = -Wall -Wextra -g -O2
 DIR = include/
 NAME = bsq
 
