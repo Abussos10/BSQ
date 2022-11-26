@@ -20,6 +20,8 @@
     #define _ERROR_WRONG_SIZE_INPUT_    87
     #define _ERROR_WRONG_PATTERN_INPUT_ 88
     #define _ERROR_EMPTY_MAP_           89
+    #define _ERROR_CORRUPTED_MAP_       90
+    #define _ERROR_CORRUPTED_COLS_      91
 
     #define CHUNK                       4096
 
@@ -40,6 +42,8 @@ typedef struct bsq_infos {
     int sqrsize;
     int count;
 
+    int error;
+    int point;
 } st_bsq;
 
 // bsq.c :
@@ -47,8 +51,8 @@ int bsq(char *buffer, int size);
 void print_x(st_bsq *in);
 
 // array_handling.c :
-void fill_struct(st_bsq *in, char *buffer);
-void create_array(st_bsq *in);
+int fill_struct(st_bsq *in, char *buffer);
+int create_array(st_bsq *in);
 void free_array(st_bsq *in);
 
 // tools.c
@@ -58,7 +62,7 @@ int check_point(char c);
 int get_cols(char *buffer);
 
 // parse_map.c
-void parse_map(st_bsq *in);
+int parse_map(st_bsq *in);
 int check_sqr(st_bsq *in, int x, int y);
 int covid(st_bsq *in, int x, int y);
 int spread(st_bsq *in, int x, int y, int size);
@@ -66,7 +70,13 @@ void store_largest(st_bsq *in, int count);
 
 // generate.c
 int map_error(char *size, char *pattern);
-int generating_map(char *size, int nsize, char *pattern);
+int generating_map(char *size, char *pattern, int nsize);
+char *fill_map(char *map, char *size, char *pattern, int slen);
+
+// special_case.c
+int print_one(st_bsq *in);
+int check_one(st_bsq *in, int x, int y);
+void store_one(st_bsq *in, int x, int y);
 
 // display.c
 void display_map(st_bsq in);

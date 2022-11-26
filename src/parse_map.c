@@ -11,7 +11,7 @@
 #include <stdio.h>
 
 // basically parsing map backward
-void parse_map(st_bsq *in)
+int parse_map(st_bsq *in)
 {
     int x, y;
 
@@ -20,6 +20,9 @@ void parse_map(st_bsq *in)
             check_sqr(in, x, y);
         }
     }
+    if (in->largest == 0)
+        print_one(in);
+    return (in->error);
 }
 
 // main of checking square functions
@@ -28,6 +31,13 @@ int check_sqr(st_bsq *in, int x, int y)
     char curr = in->map[x][y];
     if (curr == 'o' || curr == '\n')
         return (0);
+    else if (curr == '.' && in->point == 0)
+        in->point = 1;
+
+    if (curr != 'o' && curr != '.' && curr != '\n') {
+        in->error = _ERROR_CORRUPTED_MAP_;
+        return (_ERROR_CORRUPTED_MAP_);
+    }
     covid(in, x, y);
 
     return (0);

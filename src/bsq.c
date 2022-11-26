@@ -13,7 +13,7 @@ int main(int ac, char **av)
         return (_ERROR_WRONG_ARG_);
     struct stat buf;
     char *buffer;
-    int size, fd;
+    int size, fd, error = 0;
     if (ac == 2) {
         stat(av[1], &buf);
         size = buf.st_size;
@@ -22,25 +22,31 @@ int main(int ac, char **av)
         if (fd == -1)
             return (_ERROR_EMPTY_FILE_);
         read(fd, buffer, size);
-        bsq(buffer, size);
+        error = bsq(buffer, size);
+        printf("size = %i\n", size);
         close(fd);
         free(buffer);
     } else
         return (map_error(av[1], av[2]));
-    return (0);
+    return (error);
 }
 
+// calling every function i need to resolve a map
 int bsq(char *buffer, int size)
 {
+    int error = 0;
     st_bsq in;
     in.bytes = size;
-    fill_struct(&in, buffer);
-    parse_map(&in);
+    error = fill_struct(&in, buffer);
+    if (parse_map(&in) != 0) {
+        free_array(&in);
+        return (_ERROR_CORRUPTED_MAP_);
+    }
     if (in.largest != 0)
         print_x(&in);
     display_map(in);
     free_array(&in);
-    return (0);
+    return (error);
 }
 
 // replacing every case of the bsq afterward
