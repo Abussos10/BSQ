@@ -23,7 +23,6 @@ int main(int ac, char **av)
             return (_ERROR_EMPTY_FILE_);
         read(fd, buffer, size);
         error = bsq(buffer, size);
-        printf("size = %i\n", size);
         close(fd);
         free(buffer);
     } else
