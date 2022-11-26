@@ -23,7 +23,8 @@ int print_one(st_bsq *in)
 int check_one(st_bsq *in, int x, int y)
 {
     char curr = in->map[x][y];
-
+    if (curr != '.')
+        return (1);
     if (curr == '.')
         store_one(in, x, y);
 
