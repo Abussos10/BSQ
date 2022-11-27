@@ -57,11 +57,13 @@ int covid(st_bsq *in, int x, int y)
 int spread(st_bsq *in, int x, int y, int size)
 {
     int i, j, count = 0;
-    if (x < 0 || y < 0)
+    if (x < 0 || y < 0 || (x - size) < 0 || (y - size) < 0)
         return (0);
     for (i = x; i < (x + size); i++) {
         for (j = y; j < (y + size); j++)
             count += check_point(in->map[i][j]);
+        if (count < 0)
+            return (0);
     }
     if (count == size * size) {
         if (count >= in->largest)
