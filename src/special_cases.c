@@ -36,6 +36,6 @@ void store_one(st_bsq *in, int x, int y)
 {
     in->largest = 1;
     in->sqrsize = 1;
-    in->orix = x;
-    in->oriy = y;
+    in->bsqx = x;
+    in->bsqy = y;
 }
