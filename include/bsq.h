@@ -15,13 +15,13 @@
     #include <stdlib.h>
     #include <fcntl.h>
     #include "../include/my.h"
-    #define _ERROR_EMPTY_FILE_          85
-    #define _ERROR_WRONG_ARG_           86
-    #define _ERROR_WRONG_SIZE_INPUT_    87
-    #define _ERROR_WRONG_PATTERN_INPUT_ 88
-    #define _ERROR_EMPTY_MAP_           89
-    #define _ERROR_CORRUPTED_MAP_       90
-    #define _ERROR_CORRUPTED_COLS_      91
+    #define _ERROR_EMPTY_FILE_          84
+    #define _ERROR_WRONG_ARG_           84
+    #define _ERROR_WRONG_SIZE_INPUT_    84
+    #define _ERROR_WRONG_PATTERN_INPUT_ 84
+    #define _ERROR_EMPTY_MAP_           84
+    #define _ERROR_CORRUPTED_MAP_       84
+    #define _ERROR_CORRUPTED_COLS_      84
 
     #define CHUNK                       4096
 
