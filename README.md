@@ -27,7 +27,7 @@ Usage for a given map :
 
 Usage for a generated map :
     
-    ./bsq
+    ./bsq [SIZE] [PATTERN]
 
 Example to generate a map :
 
