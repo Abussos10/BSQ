@@ -14,6 +14,8 @@ Not solved map :
 Solved map :  
 ![Screenshot](assets/examples/example_map_solved.png)
 
+It’s definitely a square, even if visually it doesn’t look like one.
+
 ## Usage
 
 Compilation :  
@@ -25,7 +27,7 @@ Usage for a given map :
 
 Usage for a generated map :
     
-    ./bsq
+    ./bsq [SIZE] [PATTERN]
 
 Example to generate a map :
 
@@ -36,6 +38,9 @@ Example to generate a map :
 If you want to test the algorithm complexity with different maps there is a folder at the root with a non-exhaustive list of solved and unsolved maps (from 100x100 to 10000x10000)
     
     ./maps-intermediate/mouli_maps/
+    
+If ever there are several solutions, you have to represent only the highest square. If they
+are still several solutions, choose the square to the left.  
 
 The goal of this project was to optimize as much as possible our handmade algorithm to resolve this problem in C.  
 
