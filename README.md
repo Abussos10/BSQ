@@ -13,3 +13,37 @@ Not solved map :
 
 Solved map :  
 ![Screenshot](assets/examples/example_map_solved.png)
+
+## Usage
+
+Compilation :  
+    
+    make  
+Usage for a given map :  
+    
+    ./bsq [PATH TO THE MAP]
+
+Usage for a generated map :
+    
+    ./bsq
+
+Example to generate a map :
+
+![Screenshot](assets/examples/example_generated_map.png)
+
+## Additional informations
+
+If you want to test the algorithm complexity with different maps there is a folder at the root with a non-exhaustive list of solved and unsolved maps (from 100x100 to 10000x10000)
+    
+    ./maps-intermediate/mouli_maps/
+
+The goal of this project was to optimize as much as possible our handmade algorithm to resolve this problem in C.  
+
+Authorized functions :
+- open  
+- read
+- write
+- close
+- malloc
+- free
+- stat
